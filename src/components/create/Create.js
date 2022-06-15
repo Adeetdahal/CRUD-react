@@ -22,16 +22,20 @@ const Create = () => {
   };
 
   const sendDataToAPI = () => {
-    axios
-      .post('https://62a7715097b6156bff8e8e7d.mockapi.io/Crud', {
-        fullname,
-        email,
-      })
-      .then((response) => {
-        console.log(response);
-        // navigate('/read');
-        setFormData({ fullname: '', email: '' });
-      });
+    if (fullname === '' || email === '') {
+      return alert('Form cant be submitted empty');
+    } else {
+      axios
+        .post('https://62a7715097b6156bff8e8e7d.mockapi.io/Crud', {
+          fullname,
+          email,
+        })
+        .then((response) => {
+          console.log(response);
+          navigate('/read');
+          setFormData({ fullname: '', email: '' });
+        });
+    }
   };
 
   return (

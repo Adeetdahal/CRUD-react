@@ -6,12 +6,24 @@ function Update() {
   const [apiData, setApiData] = useState([]);
 
   useEffect(() => {
+    getData();
+  });
+
+  const getData = () => {
     axios
       .get('https://62a7715097b6156bff8e8e7d.mockapi.io/Crud')
       .then((getData) => {
         setApiData(getData.data);
       });
-  }, []);
+  };
+
+  function onDelete(id) {
+    axios
+      .delete(`https://62a7715097b6156bff8e8e7d.mockapi.io/Crud/${id}`)
+      .then(() => {
+        getData();
+      });
+  }
 
   return (
     <div className=" flex justify-center ">
@@ -37,8 +49,12 @@ function Update() {
                   </button>
                 </td>
                 <td>
-                  <button className="bg-red-500 hover:bg-red-700 text-white py-2 px-4 rounded">
-                    <Link to="/delete">Delete</Link>
+                  <button
+                    className="bg-red-500 hover:bg-red-700 text-white py-2 px-4 rounded"
+                    onClick={() => onDelete(val.id)}
+                  >
+                    Delete
+                    {/* <Link to="/delete">Delete</Link> */}
                   </button>
                 </td>
               </tr>
