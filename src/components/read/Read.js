@@ -11,7 +11,8 @@ function Update() {
       .then((getData) => {
         setApiData(getData.data);
       });
-  });
+  }, []);
+
   return (
     <div className=" flex justify-center ">
       <table className="w-ful  text-left dark:text-gray-400">
@@ -31,13 +32,13 @@ function Update() {
                 <td className="px-2 py-2">{val.fullname}</td>
                 <td>{val.email}</td>
                 <td className="px-2">
-                  <button class="bg-blue-500 hover:bg-blue-700 text-white  py-2 px-4 rounded">
-                    <Link to="./update">Update</Link>
+                  <button className="bg-blue-500 hover:bg-blue-700 text-white  py-2 px-4 rounded">
+                    <Link to={`/update/${val.id}`}>Update</Link>
                   </button>
                 </td>
                 <td>
-                  <button class="bg-red-500 hover:bg-red-700 text-white py-2 px-4 rounded">
-                    <Link to="./delete">Delete</Link>
+                  <button className="bg-red-500 hover:bg-red-700 text-white py-2 px-4 rounded">
+                    <Link to="/delete">Delete</Link>
                   </button>
                 </td>
               </tr>
