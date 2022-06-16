@@ -23,7 +23,7 @@ const Create = () => {
 
   const sendDataToAPI = () => {
     if (fullname === '' || email === '') {
-      return alert('Form cant be submitted empty');
+      return alert("Form can't be submitted empty");
     } else {
       axios
         .post('https://62a7715097b6156bff8e8e7d.mockapi.io/Crud', {
